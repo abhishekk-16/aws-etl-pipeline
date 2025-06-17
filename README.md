@@ -20,8 +20,7 @@ The pipeline leverages several AWS services orchestrated into a seamless workflo
 
 ### Architecture Diagram
 
-![Architecture Diagram](docs/architecture_diagram.png)
-*(Replace `architecture_diagram.png` with a link to your actual diagram. If you don't have one, create a simple one using tools like Draw.io, Lucidchart, or even PowerPoint, and save it as a PNG in the `docs/` folder.)*
+![Architecture Diagram](files/sales-data-etl-flowchart.png)
 
 ## AWS Services Used
 
