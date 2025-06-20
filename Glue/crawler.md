@@ -85,7 +85,7 @@ Trust Relationship
                               "arn:aws:glue:ap-south-1:183295412439:crawler/parquet_data_reader"
                         ]
                    },
-                   "StringsEquals": {
+                   "StringEquals": {
                         "aws:SourceAccount": "183295412439"
                    }
              }
