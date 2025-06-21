@@ -185,3 +185,29 @@ Trust Relationship
     ]
 }
 ```
+
+## Glue connection for Redshift
+
+For this job we need to create a Glue connection for Redshift
+
+### Prerequisites:
+
+1. **VPC endpoints:**
+   * S3 Endpoint
+   * Redshift Endpoint
+   * Secrets Manager Endpoint
+   * KMS Endpoint
+   * STS Endpoint
+
+2. **Security Group:**
+   * Inbound rule for Redshift and a self refferencing inbound rule.
+  
+3. **IAM Role:**
+   * We'll use the same IAM role that we're using for `redshift-loader-job`.
+
+### Connection creation:
+
+   * Select Amazon Redshift as Data Source.
+   * Select Your Redshift Cluster, Database, provide credentials and IAM role.
+   * Finally Review and create.
+   * After sucessfull creation Test your connection.
