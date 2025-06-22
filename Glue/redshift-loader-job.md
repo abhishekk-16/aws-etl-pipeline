@@ -32,7 +32,7 @@ logger.info(f"Job started with arguments: {args}")
 # --- Configuration for Glue Job 2 ---
 # Replace with your actual Glue Data Catalog database and table for Parquet data
 GLUE_DATABASE_NAME = "db-01"
-GLUE_PARQUET_TABLE_NAME = "processed-sales-data-file" # Name created by Crawler 2
+GLUE_PARQUET_TABLE_NAME = "processed_sales_data_file" # Name created by Crawler 2
 
 REDSHIFT_CONNECTION_NAME = "Redshift-connection-SalesData"
 
