@@ -1,14 +1,14 @@
-## csv-data-reader-crawler
+## csv-data-reader crawler
 
-This crawler is created to crawl `sales-data-etl-project-bucket/input/` folder and discover the schema of newly added csv file and create/update table in glue data catalog.
+This crawler is created to crawl `sales-data-etl-project/input/` folder and discover the schema of newly added csv file and create/update table in glue data catalog.
 
-## parquet-data-reader-crawler
+## parquet-data-reader crawler
 
-This crawler is created to crawl `sales-data-etl-project-bucket/output/` folder and discover the schema of newly added parquet file and create/update table in glue data catalog.
+This crawler is created to crawl `sales-data-etl-project/output/` folder and discover the schema of newly added parquet file and create/update table in glue data catalog.
 
 ## IAM Role
 
-We are using a common IAM Role `role_for_crawler` for both the crawlers.
+We are using a common IAM Role `role-for-crawler` for both the crawlers.
 
 ```json
 {
@@ -21,8 +21,8 @@ We are using a common IAM Role `role_for_crawler` for both the crawlers.
                 "s3:ListBucket"
             ],
             "Resource": [
-                "arn:aws:s3:::sales-data-etl-project-bucket",
-                "arn:aws:s3:::sales-data-etl-project-bucket/*"
+                "arn:aws:s3:::sales-data-etl-project",
+                "arn:aws:s3:::sales-data-etl-project/*"
             ]
         },
         {
@@ -81,8 +81,8 @@ Trust Relationship
             "Condition": {
                   "ArnEquals": {
                        "aws:SourceArn": [
-                              "arn:aws:glue:ap-south-1:183295412439:crawler/csv_data_reader",
-                              "arn:aws:glue:ap-south-1:183295412439:crawler/parquet_data_reader"
+                              "arn:aws:glue:ap-south-1:183295412439:crawler/csv-data-reader",
+                              "arn:aws:glue:ap-south-1:183295412439:crawler/parquet-data-reader"
                         ]
                    },
                    "StringEquals": {
