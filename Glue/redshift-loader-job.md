@@ -32,18 +32,16 @@ logger.info(f"Job started with arguments: {args}")
 # --- Configuration for Glue Job 2 ---
 # Replace with your actual Glue Data Catalog database and table for Parquet data
 GLUE_DATABASE_NAME = "db-01"
-GLUE_PARQUET_TABLE_NAME = "processed_sales_file" # Name created by Crawler 2
+GLUE_PARQUET_TABLE_NAME = "processed-sales-data-file" # Name created by Crawler 2
 
-# Replace with your Redshift Glue Connection name (created in Step 4)
-REDSHIFT_CONNECTION_NAME = "Redshift connection4_SALEDATA"
+REDSHIFT_CONNECTION_NAME = "Redshift-connection-SalesData"
 
-# Replace with your Redshift database and target table name (created in Step 5)
 REDSHIFT_DATABASE_NAME = "dev" # Or your specific Redshift database
-REDSHIFT_TABLE_NAME = "sale_data_tab" # Your target table in Redshift
+REDSHIFT_TABLE_NAME = "sales_data_table" # Your target table in Redshift
 
 # This is the S3 path Redshift will use for temporary staging during COPY operations.
-# The IAM role associated with your REDSHIFT WORKGROUP (from Step 1) must have R/W access here.
-REDSHIFT_TEMP_DIR = "s3://etl-git-project-bucket/redshift-temp/"
+# The IAM role associated with your REDSHIFT WORKGROUP must have R/W access here.
+REDSHIFT_TEMP_DIR = "s3://sales-data-etl-project/redshift-temp/"
 
 logger.info(f"Reading Parquet data from Glue Data Catalog: {GLUE_DATABASE_NAME}.{GLUE_PARQUET_TABLE_NAME}")
 # Read Parquet Data from Glue Data Catalog
@@ -90,8 +88,8 @@ logger.info("Glue Job 2 committed successfully.")
                 "s3:DeleteObject"
             ],
             "Resource": [
-                "arn:aws:s3:::etl-git-project-bucket",
-                "arn:aws:s3:::etl-git-project-bucket/*"
+                "arn:aws:s3:::sales-data-etl-project",
+                "arn:aws:s3:::sales-data-etl-project/*"
             ]
         },
         {
@@ -174,7 +172,7 @@ Trust Relationship
             "Condition": {
                 "ArnEquals": {
                     "aws:SourceArn": [ 
-                        "arn:aws:glue:ap-south-1:183295412439:job/redshift_loader_job"
+                        "arn:aws:glue:ap-south-1:183295412439:job/redshift-loader-job"
                     ]
                        },
                 "StringEquals": {
@@ -188,7 +186,7 @@ Trust Relationship
 
 ## Glue connection for Redshift
 
-For this job we need to create a Glue connection for Redshift
+For this job we need to create a Glue connection for Redshift (`Redshift-connection-SalesData`)
 
 ### Prerequisites:
 
