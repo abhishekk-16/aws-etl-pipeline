@@ -3,7 +3,7 @@
 These rules are made for crawlers , on crawler state change
 ("Succeeded", "Failed") they publish in SNS topic.
 
-### crawler01-rule
+### crawler-01-rule
 
 **Event Pattern**
 
@@ -13,7 +13,7 @@ These rules are made for crawlers , on crawler state change
   "detail-type": ["Glue Crawler State Change"],
   "detail": {
     "state": ["Succeeded", "Failed"],
-    "crawlerName": ["csv_data_reader"]
+    "crawlerName": ["csv-data-reader"]
   }
 ```
 
@@ -29,7 +29,7 @@ These rules are made for crawlers , on crawler state change
                 "sns:Publish"
             ],
             "Resource": [
-                "arn:aws:sns:ap-south-1:183295412439:ETL-Notification"
+                "arn:aws:sns:ap-south-1:183295412439:sales-data-topic"
             ]
         }
     ]
@@ -53,7 +53,7 @@ Trust Relationship
                     "aws:SourceAccount": "183295412439"
                 },
                 "ArnEquals": {
-                    "aws:SourceArn": "arn:aws:events:ap-south-1:183295412439:rule/crawler01_rule"
+                    "aws:SourceArn": "arn:aws:events:ap-south-1:183295412439:rule/crawler-01-rule"
                 }
             }
         }
@@ -62,7 +62,7 @@ Trust Relationship
 ```
 
 
-### crawler02-rule
+### crawler-02-rule
 
 **Event Pattern**
 
@@ -72,7 +72,7 @@ Trust Relationship
   "detail-type": ["Glue Crawler State Change"],
   "detail": {
     "state": ["Succeeded", "Failed"],
-    "crawlerName": ["parquet_data_reader"]
+    "crawlerName": ["parquet-data-reader"]
   }
 ```
 
@@ -88,7 +88,7 @@ Trust Relationship
                 "sns:Publish"
             ],
             "Resource": [
-                "arn:aws:sns:ap-south-1:183295412439:ETL-Notification"
+                "arn:aws:sns:ap-south-1:183295412439:sales-data-topic"
             ]
         }
     ]
@@ -112,7 +112,7 @@ Trust Relationship
                     "aws:SourceAccount": "183295412439"
                 },
                 "ArnEquals": {
-                    "aws:SourceArn": "arn:aws:events:ap-south-1:183295412439:rule/crawler02_rule"
+                    "aws:SourceArn": "arn:aws:events:ap-south-1:183295412439:rule/crawler-02-rule"
                 }
             }
         }
