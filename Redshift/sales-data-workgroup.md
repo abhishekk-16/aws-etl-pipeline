@@ -18,8 +18,8 @@ Attach the following IAM role with the workgroup:
                 "s3:DeleteObject"
             ],
             "Resource": [
-                "arn:aws:s3:::sales-data-etl-project-bucket",
-                "arn:aws:s3:::sales-data-etl-project-bucket/*"
+                "arn:aws:s3:::sales-data-etl-project",
+                "arn:aws:s3:::sales-data-etl-project/*"
             ]
         },
         {
