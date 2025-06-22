@@ -2,7 +2,7 @@
 
 These rules are made for Glue ETL jobs, on job state change ("SUCCEEDED", "FAILED") they publish in SNS topic.
 
-### job01-rule
+### job-01-rule
 
 **Event Pattern**
 
@@ -29,7 +29,7 @@ These rules are made for Glue ETL jobs, on job state change ("SUCCEEDED", "FAILE
                 "sns:Publish"
             ],
             "Resource": [
-                "arn:aws:sns:ap-south-1:183295412439:ETL-Notification"
+                "arn:aws:sns:ap-south-1:183295412439:sales-data-topic"
             ]
         }
     ]
@@ -53,7 +53,7 @@ Trust Relationship
                     "aws:SourceAccount": "183295412439"
                 },
                 "ArnEquals": {
-                    "aws:SourceArn": "arn:aws:events:ap-south-1:183295412439:rule/job01_rule"
+                    "aws:SourceArn": "arn:aws:events:ap-south-1:183295412439:rule/job-01-rule"
                 }
             }
         }
@@ -61,7 +61,7 @@ Trust Relationship
 }
 ```
 
-## job02-rule
+## job-02-rule
 
 **Event Pattern**
 
@@ -88,7 +88,7 @@ Trust Relationship
                 "sns:Publish"
             ],
             "Resource": [
-                "arn:aws:sns:ap-south-1:183295412439:ETL-Notification"
+                "arn:aws:sns:ap-south-1:183295412439:sales-data-topic"
             ]
         }
     ]
@@ -112,7 +112,7 @@ Trust Relationship
                     "aws:SourceAccount": "183295412439"
                 },
                 "ArnEquals": {
-                    "aws:SourceArn": "arn:aws:events:ap-south-1:183295412439:rule/job02_rule"
+                    "aws:SourceArn": "arn:aws:events:ap-south-1:183295412439:rule/job-02_rule"
                 }
             }
         }
