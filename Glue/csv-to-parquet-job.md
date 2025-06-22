@@ -50,7 +50,7 @@ GLUE_CATALOG_DATABASE = "db-01"
 GLUE_CATALOG_TABLE_NAME = "input"
 
 # Target S3 path for processed Parquet files
-TARGET_S3_PATH = "s3://etl-git-project-bucket/output/processed-sales-file/"
+TARGET_S3_PATH = "s3://sales-data-etl-project/output/processed-sales-data-file/"
 
 # IMPORTANT: Adjust this format to match your actual CSV date strings!
 DATE_INPUT_FORMAT = "M/d/yyyy"
@@ -234,8 +234,8 @@ logger.info("Glue Job 1 committed successfully.")
                 "s3:ListBucket"
             ],
             "Resource": [
-                "arn:aws:s3:::etl-git-project-bucket",
-                "arn:aws:s3:::etl-git-project-bucket/*"
+                "arn:aws:s3:::sales-data-etl-project",
+                "arn:aws:s3:::sales-data-etl-project/*"
             ]
         },
         {
@@ -247,7 +247,7 @@ logger.info("Glue Job 1 committed successfully.")
             ],
             "Resource": [
                 "arn:aws:glue:ap-south-1:183295412439:database/db-01",
-                "arn:aws:glue:ap-south-1:183295412439:table/db-01/data-csvinput"
+                "arn:aws:glue:ap-south-1:183295412439:table/db-01/input"
             ]
         },
 
@@ -295,7 +295,7 @@ Trust Relationship
             "Condition": {
                 "ArnEquals": {
                     "aws:SourceArn": [ 
-                        "arn:aws:glue:ap-south-1:183295412439:job/csv_to_parquet_job"
+                        "arn:aws:glue:ap-south-1:183295412439:job/csv-to-parquet-job"
                     ]
                        },
                 "StringEquals": {
