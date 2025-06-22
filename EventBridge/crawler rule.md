@@ -119,3 +119,33 @@ Trust Relationship
     ]
 }
 ```
+
+* While creating both the rule select `Input transformer` in configure target input.
+* Configure Input Transformer with following:
+
+**Input Path**
+
+```json
+{
+  "Message": "$.detail.message",
+  "compeletion": "$.detail.completionDate",
+  "crawlerName": "$.detail.crawlerName",
+  "status": "$.detail.state",
+  "warningMessage": "$.detail.warningMessage"
+}
+```
+
+**Template**
+
+```json
+{
+  "Crawler Notification":
+  {
+    "Crawler-Name":"<crawlerName>",
+    "Status":"<status>",
+    "Warning":"<warningMessage>",
+    "Message":"<Message>",
+    "Completion":"<compeletion>"
+  }
+}
+```
