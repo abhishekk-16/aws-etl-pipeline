@@ -59,3 +59,5 @@ Trust Relationship
     ]
 }
 ```
+
+* While creating the rule select `Matched events` in configure target input.
