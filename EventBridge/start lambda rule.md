@@ -1,6 +1,6 @@
 ## start-lambda-rule
 
-This EventBridge rule will invoke `start-workflow-function` Lambda function when new objects are added in `sales-data-etl-project`.
+This EventBridge rule will invoke `start-workflow-function` Lambda function when new objects are added in `sales-data-etl-project` S3 bucket.
 
 **Event Pattern**
 
