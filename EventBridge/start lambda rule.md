@@ -1,6 +1,6 @@
-## start_workflow_rule
+## start-lambda-rule
 
-This EventBridge rule will invoke `start_workflow_function` Lambda function when new objects are added in `sales-data-etl-project-bucket`.
+This EventBridge rule will invoke `start-workflow-function` Lambda function when new objects are added in `sales-data-etl-project`.
 
 **Event Pattern**
 
@@ -10,7 +10,7 @@ This EventBridge rule will invoke `start_workflow_function` Lambda function when
   "detail-type": ["Object Created"],
   "detail": {
     "bucket": {
-      "name": ["sales-data-etl-project-bucket"]
+      "name": ["sales-data-etl-project"]
     }
   }
 }
@@ -28,7 +28,7 @@ This EventBridge rule will invoke `start_workflow_function` Lambda function when
                 "lambda:InvokeFunction"
             ],
             "Resource": [
-                "arn:aws:lambda:ap-south-1:183295412439:function:start_workflow_function"
+                "arn:aws:lambda:ap-south-1:183295412439:function:start-workflow-function"
             ]
         }
     ]
@@ -52,7 +52,7 @@ Trust Relationship
                     "aws:SourceAccount": "183295412439"
                 },
                 "ArnEquals": {
-                    "aws:SourceArn": "arn:aws:events:ap-south-1:183295412439:rule/start_workflow_rule"
+                    "aws:SourceArn": "arn:aws:events:ap-south-1:183295412439:rule/start-lambda-rule"
                 }
             }
         }
