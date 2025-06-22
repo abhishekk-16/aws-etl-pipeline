@@ -17,10 +17,8 @@ glue_client = boto3.client('glue', region_name='ap-south-1')
 sns_client = boto3.client('sns', region_name='ap-south-1') # Initialize SNS client
 
 # --- Configuration ---
-GLUE_WORKFLOW_NAME = "SalesData_Workflow" # IMPORTANT: Replace with your actual Glue Workflow name
-# IMPORTANT: Replace with your actual SNS Topic ARN for Lambda notifications
-# You can use the same topic as Glue Workflow alerts, or a new one.
-SNS_TOPIC_ARN = "arn:aws:sns:ap-south-1:183295412439:OrderNotifiction"
+GLUE_WORKFLOW_NAME = "sales-data-workflow" 
+SNS_TOPIC_ARN = "arn:aws:sns:ap-south-1:183295412439:sales-data-topic"
 
 def publish_sns_message(subject, message):
     """
@@ -135,19 +133,19 @@ def lambda_handler(event, context):
                 "logs:PutLogEvents"
             ],
             "Resource":  [
-                "arn:aws:logs:ap-south-1:183295412439:log-group:/aws/lambda/start_workflow_function:*"
+                "arn:aws:logs:ap-south-1:183295412439:log-group:/aws/lambda/start-workflow-function:*"
             ]
         },
         {
             "Sid": "snsPublish",
             "Effect": "Allow",
             "Action": "sns:Publish",
-            "Resource": "arn:aws:sns:ap-south-1:183295412439:OrderNotifiction"
+            "Resource": "arn:aws:sns:ap-south-1:183295412439:sales-data-topic"
         },
          {
             "Effect": "Allow",
             "Action": "glue:StartWorkflowRun",
-            "Resource": "arn:aws:glue:ap-south-1:183295412439:workflow/SalesData_Workflow"
+            "Resource": "arn:aws:glue:ap-south-1:183295412439:workflow/sales-data-workflow"
         }
     ]
 }
@@ -170,7 +168,7 @@ Trust Relationship
                     "aws:SourceAccount": "183295412439"
                 },
                 "ArnLike": {
-                    "aws:SourceArn": "arn:aws:lambda:ap-south-1:183295412439:function:start_workflow_function"
+                    "aws:SourceArn": "arn:aws:lambda:ap-south-1:183295412439:function:start-workflow-function"
                 }
             }
         }
