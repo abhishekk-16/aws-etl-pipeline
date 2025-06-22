@@ -29,7 +29,7 @@ These rules are made for Glue ETL jobs, on job state change ("SUCCEEDED", "FAILE
                 "sns:Publish"
             ],
             "Resource": [
-                "arn:aws:sns:ap-south-1:183295412439:OrderNotifiction"
+                "arn:aws:sns:ap-south-1:183295412439:ETL-Notification"
             ]
         }
     ]
@@ -88,7 +88,7 @@ Trust Relationship
                 "sns:Publish"
             ],
             "Resource": [
-                "arn:aws:sns:ap-south-1:183295412439:OrderNotifiction"
+                "arn:aws:sns:ap-south-1:183295412439:ETL-Notification"
             ]
         }
     ]
@@ -117,5 +117,34 @@ Trust Relationship
             }
         }
     ]
+}
+```
+
+
+* While creating both the rule select `Input transformer` in configure target input.
+* Configure Input Transformer with following:
+
+**Input Path**
+
+```json
+{
+  "jobName": "$.detail.jobName",
+  "message": "$.detail.message",
+  "status": "$.detail.state",
+  "time": "$.time"
+}
+```
+
+**Template**
+
+```json
+{
+  "Glue Job Notification":
+  {
+    "Job Name": "<jobName>",
+    "Status": "<status>",
+    "Time": "<time>",
+    "Message": "<message>"
+    }
 }
 ```
