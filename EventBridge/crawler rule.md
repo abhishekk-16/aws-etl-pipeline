@@ -29,7 +29,7 @@ These rules are made for crawlers , on crawler state change
                 "sns:Publish"
             ],
             "Resource": [
-                "arn:aws:sns:ap-south-1:183295412439:OrderNotifiction"
+                "arn:aws:sns:ap-south-1:183295412439:ETL-Notification"
             ]
         }
     ]
@@ -88,7 +88,7 @@ Trust Relationship
                 "sns:Publish"
             ],
             "Resource": [
-                "arn:aws:sns:ap-south-1:183295412439:OrderNotifiction"
+                "arn:aws:sns:ap-south-1:183295412439:ETL-Notification"
             ]
         }
     ]
